@@ -1,6 +1,7 @@
 import './Parrafo.css';
 import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
+import Popup from "../Popup/Popup";
 
 function Parrafo() {
     const location = useLocation();
@@ -40,12 +41,19 @@ function Parrafo() {
         shuffleArray([...palabrasCorrectas])
     );
 
+    const regresarComponente = () => {
+        clearInterval(intervalo.current);
+        return <Popup min={min} seg={seg} intentos={null} resultado={resultado} estado={estado.toUpperCase()}></Popup>
+    };
+
     const actSeg = useRef(0);
     const actMin = useRef(0);
     const intervalo = useRef(null);
 
     const [seg, setSeg] = useState(0);
     const [min, setMin] = useState(0);
+    const [activar, setActivar] = useState(false);
+    const [estado, setEstado] = useState('jugando');
 
     useEffect(() => {
         intervalo.current = setInterval(() => {
@@ -92,7 +100,16 @@ function Parrafo() {
             if (p === palabrasCorrectas[i]) correctas++;
         });
         setResultado(correctas);
+        setActivar(true);
     }
+
+    useEffect(() => {
+        if(resultado === total){
+            setEstado('ganaste');
+        }else{
+            setEstado('perdiste');
+        }
+    }, [resultado])
 
     function renderParrafo() {
         const partes = parrafoProcesado.split("___");
@@ -157,6 +174,7 @@ function Parrafo() {
                     )}
                 </div>
             </div>
+            {(activar) && regresarComponente()}
         </div>
     );
 }
