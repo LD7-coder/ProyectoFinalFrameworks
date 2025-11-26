@@ -4,6 +4,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 function Sopa() {
+  //Haciendo prueba de pusj 
   const location = useLocation();
   const palabrasAI = location.state;
 
