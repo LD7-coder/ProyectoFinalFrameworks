@@ -1,6 +1,5 @@
 import CrucigramaGame from "../../games/crucigrama";
 import './Crucigrama.css';
-//import { useEffect, useRef, useState } from "react";
 import { useState, useEffect, useRef} from "react";
 import Popup from "../Popup/Popup";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +14,7 @@ function Crucigrama() {
 
     let objeto = CrucigramaGame(palabrasDesdeAI, 20),
         crucigrama = objeto.matriz,
-        indices = objeto.indices; // <-- matriz de índices que añadimos
+        indices = objeto.indices; 
 
     console.log(crucigrama)
     console.log("indices:", indices)
@@ -23,7 +22,6 @@ function Crucigrama() {
     let pistas = pistasDesdeAI;
     let palabras_ingresadas = [];
 
-    //Espacios donde se guardaran los cambios de onChange
     crucigrama.forEach(row => {
         palabras_ingresadas.push([]);
         row.forEach(() => {
@@ -159,7 +157,6 @@ function Crucigrama() {
                                     {item === item.toUpperCase() || item.length === 2
                                         ? (<div className="organizarI" ref={(div) => setDivRef(div, rowKey, colKey)}>
                                             <div style={{ width: "20px", height: "15px", fontSize: "10px", color: "#0d0d0d", textShadow: "0 0 4px rgba(0, 0, 0, 0.6),0 0 8px rgba(0, 0, 0, 0.4)" }}>
-                                                { /* mostramos directamente el índice si existe */ }
                                                 {indices?.[rowKey]?.[colKey] ?? ""}
                                             </div>
                                             <input className="divLetraC" maxLength={1}
