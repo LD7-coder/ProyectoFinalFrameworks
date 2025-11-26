@@ -6,6 +6,10 @@ function CrearMatrizIniciales(tam) {
   return Array.from({ length: tam }, () => Array(tam).fill(false));
 }
 
+function CrearMatrizIndices(tam) {
+  return Array.from({ length: tam }, () => Array(tam).fill(null));
+}
+
 function MostrarMatriz(matriz) { 
   matriz.forEach(fila => 
     console.log(fila.map(c => (c === "" ? " " : c)).join(" ")) 
@@ -16,7 +20,7 @@ function NormalizarPalabra(palabra) {
   return palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase(); 
 }
 
-function Colocar(matriz, matrizIniciales, palabra, x, y, dir) { 
+function Colocar(matriz, matrizIniciales, matrizIndices, palabra, x, y, dir, originalIndex) { 
   palabra = NormalizarPalabra(palabra); 
   for (let i = 0; i < palabra.length; i++) { 
     const nx = dir === "H" ? x : x + i;
@@ -36,7 +40,10 @@ function Colocar(matriz, matrizIniciales, palabra, x, y, dir) {
       }
     }
 
-    if (esInicialNueva) matrizIniciales[nx][ny] = true;
+    if (esInicialNueva) {
+      matrizIniciales[nx][ny] = true;
+      matrizIndices[nx][ny] = originalIndex + 1;
+    }
   } 
 }
 
@@ -45,7 +52,7 @@ function BuscarCoincidencias(matriz, palabra) {
   palabra = palabra.toUpperCase(); 
   for (let x = 0; x < matriz.length; x++) { 
     for (let y = 0; y < matriz.length; y++) { 
-      const letra = matriz[x][y].toUpperCase(); 
+      const letra = (matriz[x][y] || "").toUpperCase(); 
       if (letra && palabra.includes(letra)) { 
         coincidencias.push({ 
           x, 
@@ -72,7 +79,7 @@ function VerSiCabeConCruce(matriz, palabra, x, y, dir, indicePalabra) {
   return true; 
 }
 
-function ColocarConCruce(matriz, matrizIniciales, palabra, x, y, dir, indicePalabra) { 
+function ColocarConCruce(matriz, matrizIniciales, matrizIndices, palabra, x, y, dir, indicePalabra, originalIndex) { 
   palabra = NormalizarPalabra(palabra); 
   for (let i = 0; i < palabra.length; i++) { 
     const nx = dir === "H" ? x : x + (i - indicePalabra); 
@@ -91,7 +98,10 @@ function ColocarConCruce(matriz, matrizIniciales, palabra, x, y, dir, indicePala
       }
     }
 
-    if (esInicialNueva) matrizIniciales[nx][ny] = true;
+    if (esInicialNueva) {
+      matrizIniciales[nx][ny] = true;
+      matrizIndices[nx][ny] = originalIndex + 1;
+    }
   } 
 }
 
@@ -107,23 +117,25 @@ function BuscarPalabraMasLarga(palabras) {
   return [palabraMasLarga, indice]; 
 }
 
-function ColocarPalabras(matriz, matrizIniciales, palabras) { 
+function ColocarPalabras(matriz, matrizIniciales, matrizIndices, palabras, originalWords) { 
   const n = matriz.length; 
   const [primera, indice] = BuscarPalabraMasLarga(palabras); 
+  const indexRealPrimera = originalWords.findIndex(p => p.toUpperCase() === primera.toUpperCase());
   const startX = Math.floor(n / 2); 
   const startY = Math.floor((n - primera.length) / 2); 
-  Colocar(matriz, matrizIniciales, primera, startX, startY, "H"); 
+  Colocar(matriz, matrizIniciales, matrizIndices, primera, startX, startY, "H", indexRealPrimera); 
   palabras.splice(indice, 1); 
   let intentos = 0; 
   while (palabras.length > 0 && intentos < 2000) { 
     let palabra = palabras.shift(); 
     const palabraMayus = palabra.toUpperCase(); 
+    const indexReal = originalWords.findIndex(p => p.toUpperCase() === palabra.toUpperCase());
     const coincidencias = BuscarCoincidencias(matriz, palabraMayus); 
     let colocado = false; 
     for (const c of coincidencias) { 
       for (const dir of ["H", "V"]) { 
         if (VerSiCabeConCruce(matriz, palabraMayus, c.x, c.y, dir, c.indicePalabra)) { 
-          ColocarConCruce(matriz, matrizIniciales, palabra, c.x, c.y, dir, c.indicePalabra); 
+          ColocarConCruce(matriz, matrizIniciales, matrizIndices, palabra, c.x, c.y, dir, c.indicePalabra, indexReal); 
           colocado = true; 
           break; 
         } 
@@ -136,7 +148,7 @@ function ColocarPalabras(matriz, matrizIniciales, palabras) {
         const x = Math.floor(Math.random() * n); 
         const y = Math.floor(Math.random() * n); 
         if (VerSiCabeConCruce(matriz, palabraMayus, x, y, dir, 0)) { 
-          Colocar(matriz, matrizIniciales, palabra, x, y, dir); 
+          Colocar(matriz, matrizIniciales, matrizIndices, palabra, x, y, dir, indexReal); 
           colocado = true; 
           break; 
         } 
@@ -163,14 +175,14 @@ function CapitalizarIniciales(matriz, matrizIniciales) {
 }
 
 function Crucigrama(palabras, tam) { 
+  const originalWords = palabras.slice();
   const matriz = CrearMatriz(tam); 
   const matrizIniciales = CrearMatrizIniciales(tam);
-  ColocarPalabras(matriz, matrizIniciales, palabras); 
+  const matrizIndices = CrearMatrizIndices(tam);
+  ColocarPalabras(matriz, matrizIniciales, matrizIndices, palabras, originalWords); 
   CapitalizarIniciales(matriz, matrizIniciales);
   MostrarMatriz(matriz); 
-  return { matriz, palabras }; 
+  return { matriz, palabras, indices: matrizIndices }; 
 }
-
-//Crucigrama(["FER", "DAVID", "LUIS", "FRAMEWORKS", "SOFTWARE","LUNES","MAPACHE","CARRUSEL","HALLOWEEN"], 15);
 
 export default Crucigrama;

@@ -14,14 +14,14 @@ function Crucigrama() {
     ) ?? [];
 
     let objeto = CrucigramaGame(palabrasDesdeAI, 20),
-        crucigrama = objeto.matriz;
+        crucigrama = objeto.matriz,
+        indices = objeto.indices; // <-- matriz de índices que añadimos
 
     console.log(crucigrama)
+    console.log("indices:", indices)
 
     let pistas = pistasDesdeAI;
     let palabras_ingresadas = [];
-
-    //let pistas prueba = []
 
     //Espacios donde se guardaran los cambios de onChange
     crucigrama.forEach(row => {
@@ -66,8 +66,6 @@ function Crucigrama() {
     const getInputRef = (rowIndex, colIndex) => {
         return inputRef.current[rowIndex]?.[colIndex] ?? null;
     }
-
-    let c = 0;
 
     const validarCrucigrama = () => {
 
@@ -125,7 +123,6 @@ function Crucigrama() {
         }
     }, [bandera])
 
-    // Intervalo creado cuando se monta el componente
     useEffect(() => {
         console.log("Hola, estoy existiendo");
         intervalo.current = setInterval(() => {
@@ -140,7 +137,6 @@ function Crucigrama() {
             }
         }, 1100);
 
-        // Función que detiene la ejecución en cuanto se desmonta el componente
         return () => {
             clearInterval(intervalo.current);
         };
@@ -162,7 +158,10 @@ function Crucigrama() {
                                 ? (<div key={`${rowKey}${colKey}`}>
                                     {item === item.toUpperCase() || item.length === 2
                                         ? (<div className="organizarI" ref={(div) => setDivRef(div, rowKey, colKey)}>
-                                            <div style={{ width: "20px", height: "15px", fontSize: "10px", color: "#0d0d0d", textShadow: "0 0 4px rgba(0, 0, 0, 0.6),0 0 8px rgba(0, 0, 0, 0.4)" }}>{item.length === 2 ? `${c += 1} ${c +=1}` : c += 1}</div>
+                                            <div style={{ width: "20px", height: "15px", fontSize: "10px", color: "#0d0d0d", textShadow: "0 0 4px rgba(0, 0, 0, 0.6),0 0 8px rgba(0, 0, 0, 0.4)" }}>
+                                                { /* mostramos directamente el índice si existe */ }
+                                                {indices?.[rowKey]?.[colKey] ?? ""}
+                                            </div>
                                             <input className="divLetraC" maxLength={1}
                                                 onChange={(e) => {
                                                     setIngresadas(palabrasIngresadas => {
@@ -219,3 +218,4 @@ function Crucigrama() {
 }
 
 export default Crucigrama;
+

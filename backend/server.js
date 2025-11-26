@@ -10,7 +10,7 @@ const app = express();
 app.use(cors()); 
 app.use(express.json()); 
 
-const ai = new GoogleGenAI({ apiKey: "" }); 
+const ai = new GoogleGenAI({ apiKey: "AIzaSyBoWgcm_Hi9kyHmd3Xk9mYeEIWyx6Y_IZ4" }); 
 const SECRET = "puedesercualquiercontraseña"; 
 
 // Middleware para verificar JWT 
@@ -112,7 +112,7 @@ app.post("/api/analyze-pdf", verifyToken, upload.single("pdfFile"), async (req, 
 
       Genera las siguientes constantes: 
 
-      juego1: arreglo con [palabraClave, pista] - NO INCLUYAS ACENTOS 
+      juego1: arreglo con [palabraClave, pista] - NO INCLUYAS ACENTOS NI ESPACIOS, SOLO UNA PALABRA
       juego2: arreglo de 8 palabras clave - NO INCLUYAS NUMEROS 
       juego3: matriz 8x2 con [[palabra, pista], ...] - NO INCLUYAS NUMEROS, PALABRAS DE MAXIMO 9 
       juego4: arreglo donde el primer valor es un párrafo completo y los siguientes 5 valores 
