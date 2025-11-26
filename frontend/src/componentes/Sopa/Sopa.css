@@ -1,0 +1,90 @@
+.divLetraS{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.liPalabra{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border: solid;
+    width: 250px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    border: solid rgb(0, 255, 255);
+    box-shadow: 0 0 6px rgb(0, 255, 255), 0 0 12px rgb(0, 255, 255);
+    border-radius: 10px;
+    background-color: #5C5C5C;
+}
+.palabraS{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 30px;
+    border: solid rgb(0, 255, 255);
+    color: #0D0D0D;
+    background-color: #A3EEEE;
+    border-radius: 10px;
+}
+.divSopa{
+    display: grid;
+    width: 500px;
+    height: 500px;
+    border: solid rgb(0, 255, 255);
+    box-shadow: 0 0 6px rgb(0, 255, 255), 0 0 12px rgb(0, 255, 255);
+    border-radius: 10px;
+    background-color: #5C5C5C;
+}
+.divMetadatosS{
+    display: flex;
+    border: solid;
+    width: 805px;
+    height: 70px;
+    align-items: center;
+    justify-content: center;
+    border: solid rgb(0, 255, 255);
+    box-shadow: 0 0 6px rgb(0, 255, 255), 0 0 12px rgb(0, 255, 255);
+    border-radius: 10px;
+    background-color: #5C5C5C;
+    gap: 190px;
+}
+.divPantalla{
+    display: flex;
+    flex-direction: column;
+    width: 1300px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.divSecundario{
+    display: flex;
+    width: 1300px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+.MdatoS{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65px;
+}
+.Bsalir{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+    background-color: #FFC8C4;
+    border: solid #FF1439;
+}
+.Bsalir:hover{
+    border: solid #FF1439;
+    box-shadow: 0 0 10px rgba(255, 59, 59, 0.6),
+            0 0 20px rgba(255, 59, 59, 0.4),
+            0 0 30px rgba(255, 59, 59, 0.2);
+}

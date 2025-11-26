@@ -1,0 +1,143 @@
+.divPantallaA{
+    display: flex;
+    flex-direction: column;
+    width: 99vw;
+    height: 45vw;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: solid rgb(0, 255, 255);
+    box-shadow: 0 0 6px rgb(0, 255, 255), 0 0 12px rgb(0, 255, 255);
+    border-radius: 10px;
+    background-color: #5C5C5C;
+}
+.divMetadatosA{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+    height: 100px;
+}
+
+.MdatoA{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65px;
+}
+
+.principal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1000px;
+    height: 450px;
+    gap: 20px;
+}
+.secundario{
+    display: flex;
+    width: 1000px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.pistaA{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+    width: 350px;
+    height: 150px;
+    border: solid #39FF14;
+    background-color: #C8FFC4;
+    box-shadow:
+    0 0 6px rgba(57, 255, 20, 0.7),
+    0 0 12px rgba(57, 255, 20, 0.45),
+    0 0 18px rgba(57, 255, 20, 0.3);
+    border-radius: 10px;
+}
+.letras{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 450px;
+}
+.letraA {
+    text-align: center;
+    width: 45px;
+    height: 45px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #00FFFF;
+    border: none;
+    border-bottom: 3px solid #00FFFF;
+    background-color: rgba(0, 255, 255, 0.12);
+    border-radius: 6px;
+    outline: none;
+}
+
+.rowL{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 400px;
+    height: 50px;
+    gap: 5px;
+}
+.colL{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 40px;
+    border-radius: 5px;
+    border: solid rgb(0, 255, 255);
+    color: #0D0D0D;
+    background-color: #A3EEEE;
+}
+.colL:hover{
+    border: solid rgb(0, 255, 255);
+    box-shadow: 0 0 6px rgb(0, 255, 255), 0 0 12px rgb(0, 255, 255);
+}
+
+.incorrecta {
+    background-color: #ff4c4c !important;
+    color: white !important;
+    cursor: not-allowed;
+    opacity: 0.9;
+}
+
+.correcta {
+    background-color: #39FF14 !important; 
+    color: #0D0D0D !important;
+    box-shadow:
+        0 0 6px rgba(57, 255, 20, 0.7),
+        0 0 12px rgba(57, 255, 20, 0.45),
+        0 0 18px rgba(57, 255, 20, 0.3);
+    cursor: not-allowed;
+}
+.figura {
+    width: 300px;         
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4f4f4f;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.4);
+    padding: 10px;
+    overflow: hidden;      
+}
+
+.figura img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      
+    object-position: center; 
+    border-radius: 10px;
+}
+

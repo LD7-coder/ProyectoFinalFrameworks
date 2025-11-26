@@ -1,0 +1,28 @@
+.divPantallaP{
+    display: flex;
+    width: 99vw;
+    height: 45vw;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.resultados{
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: 450px;
+    align-items: center;
+    justify-content: center;
+    border: solid #8A2BE2;
+    box-shadow: 0 0 12px rgba(138, 43, 226, 0.55);
+    background-color: #5C5C5C;
+    border-radius: 20px;
+}
+.datoR{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.botonA:hover{
+    box-shadow: 0 0 10px rgba(255, 255, 51, 0.6);
+}

@@ -1,0 +1,160 @@
+.divGame{
+    display: flex;
+    width: 1100px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.divMetadatos{
+    display: flex; 
+    width: 1026px;
+    height: 70px;
+    align-items: center;
+    justify-content: center;
+    border: solid rgb(0, 255, 255);
+    box-shadow: 0 0 6px rgb(0, 255, 255), 0 0 12px rgb(0, 255, 255);
+    border-radius: 10px;
+    background-color: #5C5C5C;
+}
+
+.Mdato{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 333px;
+    height: 65px;
+}
+
+.tPalabras{
+    color: #0D0D0D;
+    text-shadow:
+    0 0 2px rgba(255, 7, 58, 0.6),
+    0 0 4px rgba(255, 7, 58, 0.4),
+    0 0 8px rgba(255, 7, 58, 0.3);
+}
+
+.divPantallaP{
+    display: flex;
+    flex-direction: column;
+    width: 1100px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.palabrasB{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 550px;
+    border: solid rgb(0, 255, 255);
+    box-shadow: 0 0 6px rgb(0, 255, 255), 0 0 12px rgb(0, 255, 255);
+    border-radius: 10px;
+    gap: 15px;
+    background-color: #5C5C5C;
+}
+
+.divParrafo {
+    width: 700px;
+    height: 550px;
+    border: 2px solid #00FFFF;
+    box-shadow:
+        0 0 10px rgba(0,255,255,0.8),
+        0 0 20px rgba(0,255,255,0.5),
+        inset 0 0 10px rgba(0,255,255,0.3);
+    border-radius: 10px;
+    background-color: #5C5C5C;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+    padding: 10px;
+}
+
+
+.hueco {
+    display: inline-block;
+    padding: 3px 10px;
+    margin: 0 3px;
+    min-width: 70px;
+    border-bottom: 2px solid #39FF14;
+    color: #d42323;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.hueco:hover {
+    background-color: rgba(57,255,20,0.1);
+    box-shadow: 0 0 8px rgba(57,255,20,0.8);
+    border-radius: 4px;
+}
+
+.palabraB {
+    padding: 8px 15px;
+    background-color: #C8FFC4;
+    border: 2px solid #39FF14;
+    border-radius: 6px;
+    font-size: 17px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.palabraB:hover {
+    transform: scale(1.08);
+    box-shadow:
+        0 0 10px rgba(57,255,20,0.7),
+        0 0 20px rgba(57,255,20,0.5);
+}
+
+.btnRevisar {
+    padding: 10px 15px;
+    background-color: #C8FFC4;
+    border: 2px solid #39FF14;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btnRevisar:hover {
+    transform: scale(1.05);
+    background-color: #e8ffe1;
+}
+
+.btn-revisar {
+    display: block;
+    margin: 20px auto;
+}
+
+.historia-texto {
+    font-size: 20px;     
+    line-height: 1.6;   
+}
+.contenedor-blanco {
+    width: 90%;
+    height: 75%;
+    background: rgb(207, 221, 223);
+    border-radius: 12px;
+    padding: 30px;
+    color: black;
+
+    display: flex;
+    align-items: center;      
+    justify-content: center;   
+}
+
+
+.contenedor-blanco .historia-texto {
+    color: black !important;
+    font-size: 20px;
+    line-height: 1.6;
+}
+
