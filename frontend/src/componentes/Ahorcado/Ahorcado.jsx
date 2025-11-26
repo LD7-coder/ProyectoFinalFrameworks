@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useRef} from "react";
 import { useLocation } from "react-router-dom";
 import { AhorcadoGame } from "../../games/ahorcado";
 import "./Ahorcado.css";
@@ -22,6 +22,11 @@ function Ahorcado() {
     const [oculta, setOculta] = useState(juego.obtenerPalabraOculta());
     const [estado, setEstado] = useState("jugando");
     const [usadas, setUsadas] = useState({});
+    const actSeg = useRef(0);
+    const actMin = useRef(0);
+    const intervalo = useRef(null);
+    const [seg, setSeg] = useState(0);
+    const [min, setMin] = useState(0);
 
     /*Funcion que retorna el Pop-up al render */
     const regresarComponente = () => {

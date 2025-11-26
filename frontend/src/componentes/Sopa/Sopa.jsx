@@ -2,6 +2,7 @@ import SopaLetras from "../../games/sopaletrascom";
 import './Sopa.css';
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import Popup from "../Popup/Popup";
 
 function Sopa() {
   //Haciendo prueba de push
@@ -69,8 +70,9 @@ function Sopa() {
   }, []);
 
   useEffect(() => {
-    if(correctas === palabras.length){
-      setEstado("ganaste");
+      {
+        if(palabras.length > 0 && correctas === palabras.length)
+          setEstado("ganaste");
     }
   }, [correctas, estado])
 
@@ -278,6 +280,7 @@ function Sopa() {
           </div>
 
           <div className="liPalabra">
+            <div style={{color: "#0d0d0d", fontSize: "30px", textShadow: "0 0 6px rgb(138, 43, 226), 0 0 12px rgb(138, 43, 226)"}}>¡PALABRAS!</div>
             {palabras.map((item, key) => (
               <div key={key} ref={(div) => setDivL(div, key)} className="palabraS">
                 <h3>{item}</h3>
@@ -285,7 +288,7 @@ function Sopa() {
             ))}
           </div>
         </div>
-        {(estado === 'ganaste' || estado === 'perdiste') && regresarComponente()}
+        {(estado === 'ganaste') && regresarComponente()}
       </div>
     </>
   );
