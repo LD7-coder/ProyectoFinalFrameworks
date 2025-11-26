@@ -122,10 +122,10 @@ function VerSiCabe(matriz, palabra, x, y, d) {
 
 function Colocar(matriz, palabra, x, y, d) {
   switch (d) {
-    case 1: for (let i = 0; i < palabra.length; i++) matriz[x][y + i] = palabra[i].toUpperCase(); break;
-    case 2: for (let i = 0; i < palabra.length; i++) matriz[x][y - i] = palabra[i].toUpperCase(); break;
-    case 3: for (let i = 0; i < palabra.length; i++) matriz[x + i][y] = palabra[i].toUpperCase(); break;
-    case 4: for (let i = 0; i < palabra.length; i++) matriz[x - i][y] = palabra[i].toUpperCase(); break;
+    case 1: for (let i = 0; i < palabra.length; i++) matriz[x][y + i] = palabra[i]; break;
+    case 2: for (let i = 0; i < palabra.length; i++) matriz[x][y - i] = palabra[i]; break;
+    case 3: for (let i = 0; i < palabra.length; i++) matriz[x + i][y] = palabra[i]; break;
+    case 4: for (let i = 0; i < palabra.length; i++) matriz[x - i][y] = palabra[i]; break;
   }
 }
 
@@ -139,7 +139,7 @@ function BuscarCoincidencias(matriz, palabra) {
           x,
           y,
           letra,
-          indicePalabra: palabra.toUpperCase().indexOf(letra)
+          indicePalabra: palabra.indexOf(letra)
         });
       }
     }
@@ -165,7 +165,7 @@ function VerSiCabeConCruce(matriz, palabra, x, y, d, indicePalabra) {
 
     if (nx < 0 || ny < 0 || nx >= n || ny >= n) return false;
 
-    if (matriz[nx][ny] !== "" && matriz[nx][ny] !== palabra[i].toUpperCase()) return false;
+    if (matriz[nx][ny] !== "" && matriz[nx][ny] !== palabra[i]) return false;
   }
 
   return true;
@@ -184,7 +184,7 @@ function ColocarConCruce(matriz, palabra, x, y, d, indicePalabra) {
 
     const nx = x + dx;
     const ny = y + dy;
-    matriz[nx][ny] = palabra[i].toUpperCase();
+    matriz[nx][ny] = palabra[i];
   }
 }
 
