@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 function Sopa() {
-  //Haciendo prueba de pusj 
+  //Haciendo prueba de push
   const location = useLocation();
   const palabrasAI = location.state;
 
@@ -28,6 +28,14 @@ function Sopa() {
   const [finalizar, setFinalizar] = useState(true); 
   const [letras_seleccionadas, setLetrasSeleccionadas] = useState([]); 
   const [modo, setModo] = useState(""); 
+  const [correctas, setCorrectas] = useState(0);
+  const [estado, setEstado] = useState("perdiste")
+
+  /*Funcion que retorna el Pop-up al render */
+    const regresarComponente = () => {
+        clearInterval(intervalo.current);
+        return <Popup min={min} seg={seg} intentos={null} resultado={correctas} estado={estado.toUpperCase()}></Popup>
+    };
 
   useEffect(() => {
     if (!palabrasAI) return;
@@ -59,6 +67,12 @@ function Sopa() {
       clearInterval(intervalo.current);
     };
   }, []);
+
+  useEffect(() => {
+    if(correctas === palabras.length){
+      setEstado("ganaste");
+    }
+  }, [correctas, estado])
 
   const setDivRef = (div, rowIndex, colIndex) => {
     if (!divRef.current[rowIndex]) divRef.current[rowIndex] = [];
@@ -141,6 +155,8 @@ function Sopa() {
     const indexC = palabras.findIndex(p => normalizarCadena(p) === palabraNorm);
 
     if (indexC > -1) {
+      /*Cambios para el pop-up*/
+      setCorrectas(correctas => (correctas+=1))
       letras_seleccionadas.forEach((l) => {
         const cell = getDivRef(l.rowIndex, l.colIndex);
         if (cell) cell.style.backgroundColor = colores[indexC % colores.length];
@@ -269,6 +285,7 @@ function Sopa() {
             ))}
           </div>
         </div>
+        {(estado === 'ganaste' || estado === 'perdiste') && regresarComponente()}
       </div>
     </>
   );

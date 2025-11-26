@@ -141,6 +141,7 @@ function Crucigrama() {
 
     }, []);
 
+    /*Función para renderizar pop-up*/
     const regresarComponente = () => {
         clearInterval(intervalo.current);
         return <Popup min={min} seg={seg} intentos={null} resultado={estado} estado={estado.toUpperCase()}></Popup>

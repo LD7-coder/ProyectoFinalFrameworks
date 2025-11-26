@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 99vw;
-    height: 45vw;
+    height: 700px;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -10,13 +10,14 @@
     box-shadow: 0 0 6px rgb(0, 255, 255), 0 0 12px rgb(0, 255, 255);
     border-radius: 10px;
     background-color: #5C5C5C;
+    z-index: 999;
 }
 .divMetadatosA{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 1000px;
-    height: 100px;
+    height: 70px;
 }
 
 .MdatoA{
@@ -31,13 +32,13 @@
     align-items: center;
     justify-content: center;
     width: 1000px;
-    height: 450px;
+    height: 360px;
     gap: 20px;
 }
 .secundario{
     display: flex;
     width: 1000px;
-    height: 100px;
+    height: 60px;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -139,5 +140,21 @@
     object-fit: cover;      
     object-position: center; 
     border-radius: 10px;
+}
+
+.indicadores{
+    display: flex;
+    width: 300px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+.contenedorIndicadores{
+    width: 300px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 

@@ -74,7 +74,7 @@ const File = () => {
                 style={{ display: 'none' }}
             />
 
-            <h1>{title}</h1>
+            <h1 className='titulo'>{title}</h1>
 
             <div className="archivo">
                 <div onClick={onDropZoneClick} style={{ cursor: 'pointer' }}>
